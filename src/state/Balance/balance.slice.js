@@ -3,12 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 export const balanceSlice = createSlice({
     name: 'balance',
     initialState:{
-        value: 500,
+        value: 1500,
     },
 
     reducers: {
-        increment: (state) => {
-            state.value += 100; // Update the state value with the payload
+        increment: (state , action) => {
+            state.value += 100 + action.payload ; 
         },
         decrement: (state) => {
             state.value -=100;

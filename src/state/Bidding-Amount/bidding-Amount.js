@@ -11,10 +11,14 @@ export const biddingSlice = createSlice({
             state.value += action.payload; 
            
         },
+
+        resetBidding: (state) => {
+            state.value = 0;
+        }
    
       },
 })
 
-export const {updateBiddng} = biddingSlice.actions;
+export const {updateBiddng , resetBidding} = biddingSlice.actions;
 
 export default biddingSlice.reducer;

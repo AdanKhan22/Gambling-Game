@@ -3,20 +3,21 @@ import "./Grid.css";
 import Button from "../Common/Buttons/Button.jsx";
 import bomb from "../../assets/bomb.svg";
 import diamond from "../../assets/diamond.svg";
-import StatsBar from "../Stats-Bar/StatsBar";
 
 //Redux imports
 import { increment, decrement } from "../../state/Balance/balance.slice";
 import { useDispatch, useSelector } from "react-redux";
-
+import { checkBidEntered } from "../../state/Is-Bid-Entered/isbidEntered.js";
+import { resetBidding } from "../../state/Bidding-Amount/bidding-Amount.js";
 //Functions Import
-import { generateRandomGems } from "./AlgorithmForGems/hard.js";
 
+import { generateRandomGems } from "./Algorithm/hard.js";
+import { logMultiplier } from "./Algorithm/Multiplier/logMultiplier.js";
 //============================================================================
 
 export default function Grid() {
   //----Redux Hooks------
-  const balance = useSelector((state) => state.balance.value);
+  const biddingAmount = useSelector((state) => state.bidding.value);
   const dispatch = useDispatch();
 
   const [isClicked, setIsClicked] = useState(true);
@@ -60,26 +61,33 @@ export default function Grid() {
 
   const onClickGridItems = (event) => {
     if (event.target.textContent == 0 && event.target.textContent != "") {
-      dispatch(increment());
+      console.log(logMultiplier(biddingAmount));
+      dispatch(increment(logMultiplier(biddingAmount)));
     } else if (
       event.target.textContent == 1 &&
       event.target.textContent != ""
     ) {
       dispatch(decrement());
-      alert("You Lost"); //Add some delay using time interval
+      // setTimeout(() => {
+
+      // }, 200);
     }
   };
 
+  const cashOut = () => {
+    dispatch(checkBidEntered());
+    dispatch(resetBidding());
+  };
   const gameReset = () => {};
 
   return (
     <>
-      <StatsBar balance={balance}></StatsBar>
       <div className="grid-wrapper">
         <div className="grid-container" onClick={onClickGridItems}>
           {gridItems}{" "}
         </div>
-        <Button></Button>
+        <Button text="Cashout" onCLick={cashOut}></Button>
+        <Button text="Restart"></Button>
       </div>
     </>
   );

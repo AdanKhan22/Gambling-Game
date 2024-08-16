@@ -1,5 +1,4 @@
--Starting Screen
--Higher the Bid Higher each Diamond Reward 
+-Starting Screen  (Done)
+-Higher the Bid Higher each Diamond Reward  (Done)
 -Difficulty System
 -Higher the Difficulty Higher each Diamond Reward + Combo 2x 3x Additonal Rewards
--

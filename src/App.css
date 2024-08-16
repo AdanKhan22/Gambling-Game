@@ -4,3 +4,12 @@
     background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
     }
+
+
+ .enter-bid{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the content horizontally and vertically */
+    color: wheat;
+ }   
