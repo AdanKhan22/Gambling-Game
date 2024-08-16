@@ -1,0 +1,23 @@
+
+.cashout-btn{
+    width: calc(80px * 5);
+    padding: 8px 16px;
+    margin: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .cashout-btn:hover {
+     background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  .cashout-btn:active { 
+    background-color: #004494;
+    transform: scale(1);
+  }
+  

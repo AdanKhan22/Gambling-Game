@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from "react";
+import "./Grid.css";
+import Button from "../Common/Buttons/Button.jsx";
 import bomb from "../../assets/bomb.svg";
 import diamond from "../../assets/diamond.svg";
 import StatsBar from "../Stats-Bar/StatsBar";
-import "./Grid.css";
+
+//Redux imports
+import { increment, decrement } from "../../state/Balance/balance.slice";
+import { useDispatch, useSelector } from "react-redux";
+
+//Functions Import
+import { generateRandomGems } from "./AlgorithmForGems/hard.js";
+
+//============================================================================
 
 export default function Grid() {
-  const [isClicked, setIsClicked] = useState(true);
-  const [balance, setBalance] = useState(500);
-  const [gridItems, setGridItems] = useState([]);
+  //----Redux Hooks------
+  const balance = useSelector((state) => state.balance.value);
+  const dispatch = useDispatch();
 
-  // Function to generate random gems
-  const generateRandomGems = () => {
-    return Math.floor(Math.random() * 2); // Generates number between 0 and 1
-  };
+  const [isClicked, setIsClicked] = useState(true);
+  const [gridItems, setGridItems] = useState([]);
 
   // Function to generate grid items
   const generateGridItems = () => {
@@ -51,15 +59,14 @@ export default function Grid() {
   };
 
   const onClickGridItems = (event) => {
-    console.log(event.target.textContent);
     if (event.target.textContent == 0 && event.target.textContent != "") {
-      setBalance(balance + 100);
+      dispatch(increment());
     } else if (
       event.target.textContent == 1 &&
       event.target.textContent != ""
     ) {
+      dispatch(decrement());
       alert("You Lost"); //Add some delay using time interval
-      setBalance(balance - 100);
     }
   };
 
@@ -72,7 +79,7 @@ export default function Grid() {
         <div className="grid-container" onClick={onClickGridItems}>
           {gridItems}{" "}
         </div>
-        <button className="cashout-btn">Cashout</button>
+        <Button></Button>
       </div>
     </>
   );

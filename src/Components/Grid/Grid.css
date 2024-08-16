@@ -1,43 +1,19 @@
 .grid-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f0f0f0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the content horizontally and vertically */
 }
+
+
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(5, 80px);
   grid-template-rows: repeat(5, 80px);
-  gap: 5px;
+  gap: 15px;
 }
 
-
-
-.cashout-btn{
-  width: calc(80px * 5);
-  padding: 8px 16px;
-  margin: 12px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.cashout-btn:hover {
-   background-color: #0056b3;
-  transform: scale(1.05);
-}
-.cashout-btn:active { 
-  background-color: #004494;
-  transform: scale(1);
-}
 
 .grid-item {
   position: relative;
@@ -92,3 +68,8 @@ margin: -1px;
 overflow: hidden;
 clip: rect(0, 0, 0, 0);
 border: 0;}
+
+
+@media (max-width: 768px) {
+ 
+}
